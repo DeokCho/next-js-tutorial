@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import axios from "axios";
 import { Header, Divider } from "semantic-ui-react";
+
+import Loading from ".././src/component/Loading";
 import ItemList from ".././src/component/ItemList";
 
 const API_URL =
@@ -9,10 +11,12 @@ const API_URL =
 
 const Home = () => {
   const [lists, setList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const getItemLists = async () => {
     try {
       const { data } = await axios.get(API_URL);
       setList(data);
+      setIsLoading(false);
     } catch (err) {}
   };
 
@@ -29,7 +33,10 @@ const Home = () => {
         Best Product
       </Header>
       <Divider />
-      <ItemList items={lists} />
+
+      <Loading isLoading={isLoading}>
+        <ItemList items={lists} />
+      </Loading>
     </div>
   );
 };

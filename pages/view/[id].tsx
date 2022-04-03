@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import ItemInfo from "../.././src/component/Item";
+import Loading from "../.././src/component/Loading";
 
 const Item = () => {
   const [item, setItem] = useState({
@@ -9,6 +10,8 @@ const Item = () => {
     name: "",
     price: "",
   });
+  const [isLoading, setisLoading] = useState(true);
+
   const router = useRouter();
   const { id } = router.query;
 
@@ -18,6 +21,7 @@ const Item = () => {
       const API_URL = `http://makeup-api.herokuapp.com/api/v1/products/${_id}.json?brand=maybelline`;
       const { data } = await axios.get(API_URL);
       setItem(data);
+      setisLoading(false);
     } catch (err) {}
   };
 
@@ -28,9 +32,9 @@ const Item = () => {
   }, []);
 
   return (
-    <div>
+    <Loading isLoading={isLoading} size={{ height: "270px" }}>
       <ItemInfo item={item} />
-    </div>
+    </Loading>
   );
 };
 
