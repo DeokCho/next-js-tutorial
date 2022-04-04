@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import Head from "next/head";
-import axios from "axios";
 import { Header, Divider } from "semantic-ui-react";
+import axios from "axios";
+import dynamic from "next/dynamic";
 
 import Loading from ".././src/component/Loading";
-import ItemList from ".././src/component/ItemList";
+import WrappedDefaultInfo from ".././src/component/WrappedDefaultInfo.tsx";
+
+const ItemList = dynamic(() => import(".././src/component/ItemList"));
 
 const API_URL =
   "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline";
@@ -26,17 +28,16 @@ const Home = () => {
 
   return (
     <div>
-      <Head>
-        <title>Next JS</title>
-      </Head>
-      <Header as="h1" style={{ paddingTop: 40 }}>
-        Best Product
-      </Header>
-      <Divider />
+      <WrappedDefaultInfo title="Main" description="Main">
+        <Header as="h1" style={{ paddingTop: 40 }}>
+          Best Product
+        </Header>
+        <Divider />
 
-      <Loading isLoading={isLoading}>
-        <ItemList items={lists} />
-      </Loading>
+        <Loading isLoading={isLoading}>
+          <ItemList items={lists} />
+        </Loading>
+      </WrappedDefaultInfo>
     </div>
   );
 };
