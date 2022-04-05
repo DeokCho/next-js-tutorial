@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { Menu } from "semantic-ui-react";
 
-import GnbItem from "./GnbItem";
-import route from "../../common/route/route";
+import TopBarItem from "src/components/topbar/TopBarItem";
+import route from "common/route/route";
 
-const Gnb = () => {
+const TopBar = () => {
   const [activeItem, setActiveItem] = useState("Home");
   const router = useRouter();
 
@@ -18,7 +18,7 @@ const Gnb = () => {
   return (
     <Menu inverted>
       {route.map(({ name, path }) => (
-        <GnbItem
+        <TopBarItem
           key={name}
           name={name}
           path={path}
@@ -30,22 +30,4 @@ const Gnb = () => {
   );
 };
 
-export default Gnb;
-
-{
-  /* <Menu.Item
-        name="home"
-        active={activeItem === "home"}
-        onClick={goToLink}
-      />
-      <Menu.Item
-        name="message"
-        active={activeItem === "message"}
-        onClick={goToLink}
-      />
-      <Menu.Item
-        name="friends"
-        active={activeItem === "friends"}
-        onClick={goToLink}
-      /> */
-}
+export default TopBar;

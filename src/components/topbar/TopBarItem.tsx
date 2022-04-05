@@ -1,7 +1,7 @@
 import { Menu } from "semantic-ui-react";
 
-const GnbItem = (props) => {
+const TopBarItem = (props) => {
   return <Menu.Item {...props} />;
 };
 
-export default GnbItem;
+export default TopBarItem;

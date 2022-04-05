@@ -1,6 +1,6 @@
-import React from "react";
 import { Button, Header } from "semantic-ui-react";
-import styles from "./Item.module.css";
+
+import styles from "src/components/bestitem/BestItem.module.css";
 
 const Item = ({ item }) => {
   const { name, image_link, price, description, category, product_type } = item;

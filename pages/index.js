@@ -3,10 +3,12 @@ import { Header, Divider } from "semantic-ui-react";
 import axios from "axios";
 import dynamic from "next/dynamic";
 
-import Loading from ".././src/component/Loading";
-import WrappedDefaultInfo from ".././src/component/WrappedDefaultInfo.tsx";
+import Loading from "src/components/common/Loading";
+import WrappedDefaultInfo from "src/components/layout/WrappedDefaultInfo";
 
-const ItemList = dynamic(() => import(".././src/component/ItemList"));
+const BestItemList = dynamic(() =>
+  import("src/components/bestitem/BestItemList")
+);
 
 const API_URL =
   "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline";
@@ -35,7 +37,7 @@ const Home = () => {
         <Divider />
 
         <Loading isLoading={isLoading}>
-          <ItemList items={lists} />
+          <BestItemList items={lists} />
         </Loading>
       </WrappedDefaultInfo>
     </div>

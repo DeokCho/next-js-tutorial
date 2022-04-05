@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Header } from "semantic-ui-react";
-import Gnb from "./Gnb";
+
+import TopBar from "src/components/topbar/TopBar";
 
 const Top = () => {
   return (
@@ -17,7 +18,7 @@ const Top = () => {
         </div>
         <Header as="h1">NEXT JS TUTORIAL</Header>
       </div>
-      <Gnb />
+      <TopBar />
     </div>
   );
 };

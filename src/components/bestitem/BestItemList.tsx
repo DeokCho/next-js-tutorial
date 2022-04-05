@@ -1,7 +1,7 @@
-import React from "react";
 import Link from "next/link";
 import { Grid } from "semantic-ui-react";
-import styles from "./ItemList.module.css";
+
+import styles from "src/components/bestitem/BestItemList.module.css";
 
 const ItemList = ({ items }) => {
   return (

@@ -1,12 +1,13 @@
 import axios from "axios";
-import ItemInfo from "../.././src/component/Item";
-import WrappedDefaultInfo from "../../src/component/WrappedDefaultInfo";
+
+import BestItem from "src/components/bestitem/BestItem";
+import WrappedDefaultInfo from "src/components/WrappedDefaultInfo";
 
 const Item = ({ item }) => {
   const { name, description } = item;
   return (
     <WrappedDefaultInfo title={name} description={description}>
-      <ItemInfo item={item} />
+      <BestItem item={item} />
     </WrappedDefaultInfo>
   );
 };
