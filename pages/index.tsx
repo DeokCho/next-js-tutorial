@@ -6,12 +6,11 @@ import dynamic from "next/dynamic";
 import Loading from "src/components/common/Loading";
 import WrappedDefaultInfo from "src/components/layout/WrappedDefaultInfo";
 
-const BestItemList = dynamic(() =>
-  import("src/components/bestitem/BestItemList")
+const BestItemList = dynamic(
+  () => import("src/components/bestitem/BestItemList")
 );
 
-const API_URL =
-  "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const Home = () => {
   const [lists, setList] = useState([]);

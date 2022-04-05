@@ -3,8 +3,9 @@ import axios from "axios";
 import BestItem from "src/components/bestitem/BestItem";
 import WrappedDefaultInfo from "src/components/layout/WrappedDefaultInfo";
 
-const Item = ({ item }) => {
+const Item = ({ item, envName }) => {
   const { name, description } = item;
+  console.log("환경변수 : ", { envName });
   return (
     <WrappedDefaultInfo title={name} description={description}>
       <BestItem item={item} />
@@ -21,6 +22,7 @@ export const getServerSideProps = async ({ params }) => {
   return {
     props: {
       item: data,
+      envName: process.env.name,
     },
   };
 };
