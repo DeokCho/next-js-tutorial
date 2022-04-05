@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import BestItem from "src/components/bestitem/BestItem";
-import WrappedDefaultInfo from "src/components/WrappedDefaultInfo";
+import WrappedDefaultInfo from "src/components/layout/WrappedDefaultInfo";
 
 const Item = ({ item }) => {
   const { name, description } = item;
