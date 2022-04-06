@@ -10,23 +10,7 @@ const BestItemList = dynamic(
   () => import("src/components/bestitem/BestItemList")
 );
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-const Home = () => {
-  const [lists, setList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const getItemLists = async () => {
-    try {
-      const { data } = await axios.get(API_URL);
-      setList(data);
-      setIsLoading(false);
-    } catch (err) {}
-  };
-
-  useEffect(() => {
-    getItemLists();
-  }, []);
-
+const Home = ({ list }) => {
   return (
     <div>
       <WrappedDefaultInfo title="Main" description="Main">
@@ -34,13 +18,21 @@ const Home = () => {
           Best Product
         </Header>
         <Divider />
-
-        <Loading isLoading={isLoading}>
-          <BestItemList items={lists} />
-        </Loading>
+        <BestItemList items={list} />
       </WrappedDefaultInfo>
     </div>
   );
 };
 
 export default Home;
+
+export const getStaticProps = async () => {
+  const URL = process.env.apiUrl;
+  const { data } = await axios.get(URL);
+  return {
+    props: {
+      list: data,
+      envName: process.env.name,
+    },
+  };
+};
