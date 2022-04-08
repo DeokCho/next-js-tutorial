@@ -3,7 +3,6 @@ import { Header, Divider } from "semantic-ui-react";
 import axios from "axios";
 import dynamic from "next/dynamic";
 
-import Loading from "src/components/common/Loading";
 import WrappedDefaultInfo from "src/components/layout/WrappedDefaultInfo";
 
 const BestItemList = dynamic(
